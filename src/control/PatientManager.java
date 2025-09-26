@@ -5,10 +5,7 @@ import adt.DynamicArray;
 import boundary.PatientManagementUI;
 import entity.Patient;
 
-/**
- *
- * @author Phang Jun Yat
- */
+
 public class PatientManager {
 
     private int nextIdNumber;
@@ -21,18 +18,7 @@ public class PatientManager {
         ui = new PatientManagementUI();
         patientQueue = new ArrayQueue<>();
 
-        if (patientList.isEmpty()) {
-            patientList.add(new Patient("P001", "851111-01-1234", "Ling Xiao", 35, "M", "012-3456789", "12 Jalan Mawar, KL", "Hypertension"));
-            patientList.add(new Patient("P002", "920222-02-2345", "MT", 30, "F", "013-9876543", "45 Jalan Melati, Penang", "Diabetes"));
-            patientList.add(new Patient("P003", "990515-03-3456", "Four Fish", 26, "M", "014-2233445", "78 Jalan Anggerik, Johor", "-"));
-            patientList.add(new Patient("P004", "011010-04-4567", "Tian Zi", 24, "F", "017-1122334", "32 Jalan Cempaka, Ipoh", "Asthma"));
-            patientList.add(new Patient("P005", "941212-05-5678", "Tomioka Giyuu", 28, "M", "016-6677889", "90 Jalan Teratai, Malacca", "-"));
-            patientList.add(new Patient("P006", "660606-06-6666", "Rengoku Kyoujurou", 45, "M", "0182345678", "99 Jalan Orchid, Seremban", "Hypertension"));
-            patientList.add(new Patient("P007", "590707-07-7777", "Tokitou Muichirou", 52, "M", "0139876543", "77 Jalan Anggerik, Alor Setar", "Diabetes"));
-            patientList.add(new Patient("P008", "640808-08-8888", "Kanroji Mitsuri", 60, "F", "0192233445", "88 Jalan Cempaka, Kuantan", "Arthritis"));
-            patientList.add(new Patient("P009", "121212-09-9012", "Kochou Shinobu", 10, "F", "010-9988776", "88 Jalan Kenanga, Sabah", "-"));
-            patientList.add(new Patient("P010", "131115-10-0123", "Uzui Tengen", 8, "M", "012-1122446", "55 Jalan Melur, Sarawak", "Diabetes"));
-        }
+        
 
         nextIdNumber = 1;
         for (int i = 0; i < patientList.getSize(); i++) {
@@ -71,7 +57,6 @@ public class PatientManager {
         } while (choice != 8);
     }
 
-    // Register Patient Function
     private void registerPatient() {
         String newId = generatePatientId();
         Patient newPatient = ui.getPatientDetails(patientList, newId);
@@ -83,7 +68,6 @@ public class PatientManager {
         return String.format("P%03d", nextIdNumber++);
     }
 
-    // Display Patient Function
     private void displayPatients() {
         if (patientList.isEmpty()) {
             ui.showMessage("No patients found.");
@@ -161,7 +145,6 @@ public class PatientManager {
         return filter;
     }
 
-    // Search Patient Function
     private void searchPatient() {
         if (patientList.isEmpty()) {
             ui.showMessage("No patients found.");
@@ -222,7 +205,6 @@ public class PatientManager {
         return result;
     }
 
-    //Update Patient Function
     private void updatePatient() {
         String id = ui.getInput("Enter which Patient ID to update: ");
         Patient p = findPatientById(id);
@@ -318,7 +300,6 @@ public class PatientManager {
         }
     }
 
-    // Delete Patient Function
     private void deletePatient() {
         if (patientList.isEmpty()) {
             ui.showMessage("No patients in the system.");
@@ -560,7 +541,6 @@ public class PatientManager {
         ui.showMessage("Priority updated for patient " + p.getName() + " (ID: " + p.getId() + ")");
     }
 
-    // Report FUnction
     private void generateReport() {
         int choice;
         do {
@@ -719,7 +699,6 @@ public class PatientManager {
                 + String.format("%.1f%%", seniorPercent * 100));
     }
 
-// Helper method to create colored bar strings
     private String createColoredBar(int length, String colorCode) {
         if (length == 0) {
             return "";
