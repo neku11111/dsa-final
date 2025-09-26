@@ -8,12 +8,7 @@ import control.MaintainDoctor;
 import control.PatientManager;
 import adt.DynamicArray;
 import java.util.Scanner;
-//import patient.Patient;  // if you need patient data
-//import doctor.Doctor;    // if you need doctor data
-/**
- *
- * @author LENOVO LOQ 15APH8
- */
+
 public class MedicalTreatmentUI {
     private MedicalTreatmentControl treatmentControl;
     private Scanner scanner;
@@ -243,7 +238,6 @@ public class MedicalTreatmentUI {
         displayTreatmentList(treatments);
     }
     
-    // Search treatments by diagnosis
     private void searchTreatmentsByDiagnosis() {
         System.out.println("\n--- Search Treatments by Diagnosis ---");
         System.out.print("Enter diagnosis keyword: ");
@@ -264,7 +258,6 @@ public class MedicalTreatmentUI {
         }
     }
     
-    // View treatments by doctor with validation
     private void viewDoctorTreatments() {
         System.out.println("\n--- Doctor's Treatments ---");
         String doctorId;
@@ -301,7 +294,6 @@ public class MedicalTreatmentUI {
         }
     }
     
-    // Update treatment record
     private void updateTreatment() {
         System.out.println("\n--- Update Treatment Record ---");
         System.out.print("Enter Treatment ID: ");
@@ -358,7 +350,6 @@ public class MedicalTreatmentUI {
         }
     }
     
-    // View all treatments
     private void viewAllTreatments() {
         System.out.println("\n--- All Treatment Records ---");
         DynamicArray<Treatment> allTreatments = treatmentControl.getAllTreatments();
@@ -370,7 +361,6 @@ public class MedicalTreatmentUI {
         }
     }
     
-    // View system statistics
     private void viewStatistics() {
         System.out.println("\n--- System Statistics ---");
         System.out.println(treatmentControl.getTreatmentStatistics());
