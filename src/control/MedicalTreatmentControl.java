@@ -1,19 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package control;
 import adt.DynamicArray;
 import entity.MedicalHistory;
 import entity.Treatment;
 import entity.Doctor;
 import entity.Patient;
-//import patient.Patient;  // if you need patient data
-//import doctor.Doctor;    // if you need doctor data
-/**
- *
- * @author LENOVO LOQ 15APH8
- */
 public class MedicalTreatmentControl {
     private DynamicArray<Treatment> allTreatments;
     private DynamicArray<MedicalHistory> patientHistories;
@@ -48,7 +39,6 @@ public class MedicalTreatmentControl {
         return patientManager.findPatientById(patientId.trim()) != null;
     }
     
-    // Method to validate if doctor ID exists
     public boolean isValidDoctorId(String doctorId) {
         if (doctorId == null || doctorId.trim().isEmpty()) {
             return false;
@@ -57,17 +47,14 @@ public class MedicalTreatmentControl {
         return doctorManager.searchDoctorById(doctorId.trim()) != null;
     }
     
-    // Method to get available doctors
     public String getAvailableDoctors() {
         return doctorManager.viewAllDoctors();
     }
     
-    // Method to get available patients 
     public String getAvailablePatients() {
         return "Please check the Patient Management system for available patient IDs.";
     }
     
-    // Add a new treatment record
     public boolean addTreatment(String patientId, String doctorId, String diagnosis, 
                             String prescription, String treatmentDate, String treatmentType,
                             String symptoms, String notes, double cost) {
@@ -87,7 +74,6 @@ public class MedicalTreatmentControl {
          return false;
      }
      
-     // Validate Doctor ID exists
      if (!isValidDoctorId(doctorId)) {
          System.out.println("Error: Doctor ID '" + doctorId + "' does not exist in the system.");
          System.out.println("Available doctors:");
@@ -105,10 +91,8 @@ public class MedicalTreatmentControl {
          return false;
      }
 
-     // Generate unique treatment ID
      String treatmentId = "T" + nextTreatmentId++;
 
-     // Create new treatment
      Treatment treatment = new Treatment(treatmentId, patientId, doctorId, diagnosis, 
                                        prescription, treatmentDate, treatmentType, 
                                        symptoms, notes, cost);
@@ -167,7 +151,6 @@ public class MedicalTreatmentControl {
         return treatments;
     }
     
-    // Get medical history for a patient
     public MedicalHistory getPatientHistory(String patientId) {
         if (!isValidPatientId(patientId)) {
             System.out.println("Warning: Patient ID '" + patientId + "' does not exist in the system.");
@@ -210,7 +193,7 @@ public class MedicalTreatmentControl {
         
         if (!isValidDoctorId(doctorId)) {
             System.out.println("Warning: Doctor ID '" + doctorId + "' does not exist in the system.");
-            return doctorTreatments; // Return empty array
+            return doctorTreatments; 
         }
         
         for (int i = 0; i < allTreatments.getSize(); i++) {
@@ -223,7 +206,6 @@ public class MedicalTreatmentControl {
         return doctorTreatments;
     }
     
-    // Update an existing treatment
     public boolean updateTreatment(String treatmentId, String diagnosis, String prescription, 
                                   String notes, double cost) {
         
@@ -274,7 +256,6 @@ public class MedicalTreatmentControl {
     
 
 
-    // Report 1: Treatment Summary Report
     public void generateTreatmentSummaryReport() {
         System.out.println("\n" + "=".repeat(60));
         System.out.println("           TREATMENT SUMMARY REPORT");
@@ -345,7 +326,6 @@ public class MedicalTreatmentControl {
         System.out.println("\n" + "=".repeat(60));
     }
 
-    // Report 2: Doctor Performance Report
     public void generateDoctorPerformanceReport() {
         System.out.println("\n" + "=".repeat(60));
         System.out.println("           DOCTOR PERFORMANCE REPORT");
@@ -378,7 +358,6 @@ public class MedicalTreatmentControl {
             }
         }
 
-        // Display doctor performance
         System.out.printf("%-10s %-12s %-12s %-15s%n", 
                          "Doctor ID", "Treatments", "Revenue", "Avg per Treatment");
         System.out.println("-".repeat(60));
@@ -412,7 +391,6 @@ public class MedicalTreatmentControl {
         }
     }
 
-    // Report 3: Patient Visit Analysis Report
     public void generatePatientAnalysisReport() {
         System.out.println("\n" + "=".repeat(60));
         System.out.println("           PATIENT ANALYSIS REPORT");
