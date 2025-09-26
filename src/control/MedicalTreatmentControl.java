@@ -28,7 +28,6 @@ public class MedicalTreatmentControl {
         this.nextTreatmentId = 1001;
         this.doctorManager = new MaintainDoctor();
         this.patientManager = new PatientManager();
-        initializeTestData(); 
     }
     
     
@@ -38,7 +37,6 @@ public class MedicalTreatmentControl {
         this.nextTreatmentId = 1001;
         this.doctorManager = doctorManager;
         this.patientManager = patientManager;
-        initializeTestData();
     }
     
     // Method to validate if patient ID exists
@@ -511,43 +509,5 @@ public class MedicalTreatmentControl {
             }
         }
         return -1;
-    }
-    
-    private void initializeTestData() {
-        System.out.println("Loading sample medical data...");
-
-        boolean result;
-
-        result = addTreatment("P001", "D001", "Common Cold", 
-                             "Rest and fluids", "2025-01-15", 
-                             "General", "Cough fever", "Recovering well", 50.0);
-        System.out.println("Added P001 treatment 1: " + result);
-
-        result = addTreatment("P001", "D001", "Follow-up", 
-                             "Continue rest", "2025-01-20", 
-                             "General", "Much better", "Recovery complete", 30.0);
-        System.out.println("Added P001 treatment 2: " + result);
-
-        result = addTreatment("P002", "D002", "Hypertension", 
-                             "Medication prescribed", "2025-01-16", 
-                             "Cardiology", "High blood pressure", "Monitor daily", 150.0);
-        System.out.println("Added P002 treatment: " + result);
-
-        result = addTreatment("P003", "D003", "Diabetes", 
-                             "Insulin therapy", "2025-01-18", 
-                             "Endocrinology", "High blood sugar", "Diet plan provided", 200.0);
-        System.out.println("Added P003 treatment: " + result);
-
-        System.out.println("Total treatments in array: " + allTreatments.getSize());
-
-        System.out.println("\nTreatments in array:");
-        for (int i = 0; i < allTreatments.getSize(); i++) {
-            Treatment t = allTreatments.getEntry(i);
-            if (t != null) {
-                System.out.println("Index " + i + ": " + t.getPatientId() + " - " + t.getDiagnosis());
-            } else {
-                System.out.println("Index " + i + ": null");
-            }
-        }
     }
 }
