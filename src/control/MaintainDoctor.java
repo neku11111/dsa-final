@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package control;
 
-/**
- *
- * @author Chow Kai Feng
- */
+
 import entity.Doctor;
 import adt.DynamicArray;
 import adt.DynamicArrayInterface;
@@ -19,20 +13,12 @@ public class MaintainDoctor {
     
     public MaintainDoctor() {
         doctorList = new DynamicArray<>();
-        
-        doctorList.add(new Doctor("D001", "Dr. Ali", "General", true, "Mon-Fri 9am-5pm", "012-3456789", "Room 101", 50.0));
-        doctorList.add(new Doctor("D002", "Dr. Siti", "Pediatrician", false, "Mon, Wed, Fri 9am-1pm", "013-9876543", "Room 102", 80.0));
-        doctorList.add(new Doctor("D003", "Dr. Lim", "Cardiology", true, "Tue-Fri 10am-4pm", "016-2233445", "Room 201", 120.0));
-        doctorList.add(new Doctor("D004", "Dr. Tan", "General", true, "Tue-Thu 10am-3pm", "019-7788990", "Room 103", 60.0));
 
     }
 
-    //Add Doctor Function
     public void addDoctor(Doctor doctor) {
         doctorList.add(doctor);
     }
-
-    //Search Doctor By ID Function
     public Doctor searchDoctorById(String doctorID) {
         for (int i = 0; i < doctorList.size(); i++) {
             Doctor d = doctorList.getEntry(i);
@@ -43,7 +29,6 @@ public class MaintainDoctor {
         return null;
     }
 
-    //Update Availability Function
     public boolean updateAvailability(String doctorID, boolean availability) {
         Doctor d = searchDoctorById(doctorID);
         if (d != null) {
@@ -63,7 +48,6 @@ public class MaintainDoctor {
         return false;
     }
 
-    //Remove Doctor Function
     public boolean removeDoctor(String doctorID) {
         for (int i = 0; i < doctorList.size(); i++) {
             Doctor d = doctorList.getEntry(i);
@@ -74,8 +58,6 @@ public class MaintainDoctor {
         }
         return false;
     }
-
-    //View All Doctors
     public String viewAllDoctors() {
         if (doctorList.isEmpty()) {
             return "No doctors available.";
@@ -86,8 +68,7 @@ public class MaintainDoctor {
         }
         return sb.toString();
     }
-
-    //Generate Availability & Workload Report Function
+    
     public String generateAvailabilityWorkloadReport() {
     int total = doctorList.size();
     int availableCount = 0, notAvailableCount = 0;
@@ -123,7 +104,6 @@ public class MaintainDoctor {
     return sb.toString();
 }
 
-    //Generate Specialization Schedule Report Function
     public String generateSpecializationScheduleReport() {
     StringBuilder sb = new StringBuilder("=== Doctor Specialization & Schedule Report ===\n");
 
